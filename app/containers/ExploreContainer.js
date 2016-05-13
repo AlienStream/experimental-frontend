@@ -10,4 +10,4 @@ class ExploreContainer extends React.Component {
   }
 }
 
-export default ExploreContainer;
+export default ExploreContainer

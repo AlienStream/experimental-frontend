@@ -10,4 +10,4 @@ class ArtistContainer extends React.Component {
   }
 }
 
-export default ArtistContainer;
+export default ArtistContainer

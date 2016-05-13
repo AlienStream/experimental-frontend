@@ -1,9 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import {Router, Route, hashHistory, IndexRoute} from 'react-router';
+import ReactDOM from 'react-dom'
+import { createStore, combineReducers, applyMiddleware } from 'redux'
+import { Provider } from 'react-redux'
+import {Router, Route, hashHistory, IndexRoute} from 'react-router'
+import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 
 
-import App from './components/app';
+import App from './components/app'
 
 import ExploreContainer from './containers/ExploreContainer'
 import LoginContainer from './containers/LoginContainer'
@@ -18,23 +21,39 @@ import CommunityContainer from './containers/CommunityContainer'
 import PlaylistContainer from './containers/PlaylistContainer'
 import TrackContainer from './containers/TrackContainer'
 
+
+import rootReducer from './reducers/index'
+
+// Add the reducer to your store on the `routing` key
+const store = createStore(
+  combineReducers({
+    rootReducer,
+    routing: routerReducer
+  })
+)
+
+// Create an enhanced history that syncs navigation events with the store
+const history = syncHistoryWithStore(hashHistory, store)
+
 ReactDOM.render(
-	<Router history={hashHistory}>
-		<Route path="/" component={App}>
-			// App Pages
-			<IndexRoute component={ExploreContainer} />
-			<Route path="login" component={LoginContainer} />
+	<Provider store={store}>
+		<Router history={history}>
+			<Route path="/" component={App}>
+				// App Pages
+				<IndexRoute component={ExploreContainer} />
+				<Route path="login" component={LoginContainer} />
 
-			// User Specific Pages
-			<Route path="communities" component={MyCommunitiesContainer} />
-			<Route path="favorites" component={MyFavoritesContainer} />
-			<Route path="playlists" component={MyPlaylistsContainer} />
-			<Route path="settings" component={SettingsContainer} />
+				// User Specific Pages
+				<Route path="communities" component={MyCommunitiesContainer} />
+				<Route path="favorites" component={MyFavoritesContainer} />
+				<Route path="playlists" component={MyPlaylistsContainer} />
+				<Route path="settings" component={SettingsContainer} />
 
-			// Object Detail Pages
-			<Route path="community/:communityName" component={CommunityContainer} />
-			<Route path="playlist/:playlistId" component={PlaylistContainer} />
-			<Route path="track/:trackId" component={TrackContainer} />
-	    </Route>
-	</Router>, 
+				// Object Detail Pages
+				<Route path="community/:communityName" component={CommunityContainer} />
+				<Route path="playlist/:playlistId" component={PlaylistContainer} />
+				<Route path="track/:trackId" component={TrackContainer} />
+		    </Route>
+		</Router>
+	</Provider>,
 document.getElementById('app')) 

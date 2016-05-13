@@ -10,4 +10,4 @@ class TrackContainer extends React.Component  {
   }
 }
 
-export default TrackContainer;
+export default TrackContainer

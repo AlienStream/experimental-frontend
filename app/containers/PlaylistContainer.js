@@ -10,4 +10,4 @@ class PlaylistContainer extends React.Component {
   }
 }
 
-export default PlaylistContainer;
+export default PlaylistContainer

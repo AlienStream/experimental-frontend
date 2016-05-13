@@ -10,4 +10,4 @@ class MyFavoritesContainer extends React.Component {
   }
 }
 
-export default MyFavoritesContainer;
+export default MyFavoritesContainer

@@ -10,4 +10,4 @@ class SettingsContainer extends React.Component  {
   }
 }
 
-export default SettingsContainer;
+export default SettingsContainer

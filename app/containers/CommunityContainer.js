@@ -10,4 +10,4 @@ class CommunityContainer extends React.Component {
   }
 }
 
-export default CommunityContainer;
+export default CommunityContainer
