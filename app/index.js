@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Router, Route, hashHistory} from 'react-router';
+import {Router, Route, hashHistory, IndexRoute} from 'react-router';
 
 
 import App from './components/app';
@@ -11,7 +11,7 @@ import LoginContainer from './containers/LoginContainer'
 import MyCommunitiesContainer from './containers/MyCommunitiesContainer'
 import MyFavoritesContainer from './containers/MyFavoritesContainer'
 import MyPlaylistsContainer from './containers/MyPlaylistsContainer'
-import Settings from './containers/SettingsContainer'
+import SettingsContainer from './containers/SettingsContainer'
 
 
 import CommunityContainer from './containers/CommunityContainer'
@@ -22,7 +22,7 @@ ReactDOM.render(
 	<Router history={hashHistory}>
 		<Route path="/" component={App}>
 			// App Pages
-			<Route path="explore" component={ExploreContainer} />
+			<IndexRoute component={ExploreContainer} />
 			<Route path="login" component={LoginContainer} />
 
 			// User Specific Pages

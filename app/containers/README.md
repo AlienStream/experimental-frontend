@@ -1,0 +1,1 @@
+Containers are the glue between redux and our View Layer. They are the controllers if you will and handle the binding of state and emitting of actions. 

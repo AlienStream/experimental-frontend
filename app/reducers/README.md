@@ -1,0 +1,1 @@
+Reducers Take an action and push a new state. They must be pure and always return the current state if the action type is unknown. Their signature must be (oldstate, action) => newstate.

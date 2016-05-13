@@ -1,0 +1,3 @@
+Dumb Components live here, these should define what props they expect and fail loudly. These don't know about the outside world. They only rely on their props and must be pure, if possible, onClick functions should not be directly bound here, but instead bound to functions passed via the props. 
+
+It is the responsiblity of the container to understand the implications of a state change. By adhering to this principle components should be more reusable. 
