@@ -1,17 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Router, Route, hashHistory} from 'react-router';
-
-const App = React.createClass({
-  render() {
-    return (
-      <div>
-        <h1>App</h1>
-        {this.props.children}
-      </div>
-    )
-  }
-})
+import App from './app';
 
 ReactDOM.render(
 	<Router history={hashHistory}>

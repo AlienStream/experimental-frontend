@@ -1,0 +1,1 @@
+Contains simple helper functions to dispatch actions to reducers
