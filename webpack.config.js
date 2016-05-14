@@ -5,6 +5,7 @@ var BUILD_DIR = path.resolve(__dirname, 'build');
 var APP_DIR = path.resolve(__dirname, 'app');
 
 var config = {
+  devtool: "source-map",
   entry: [
     'webpack-dev-server/client?http://0.0.0.0:3000', // WebpackDevServer host and port
     'webpack/hot/only-dev-server', // "only" prevents reload on syntax errors
@@ -18,6 +19,11 @@ var config = {
         include: APP_DIR,
       },
       {
+        test: /\.scss$/,
+        loaders: ["style", "css", "sass"],
+        include: APP_DIR,
+      },
+      {
         test : /\.js?/,
         include : APP_DIR,
         loader : 'babel'
@@ -25,7 +31,7 @@ var config = {
     ]
   },
   output: {
-    publicPath: '/js/',
+    publicPath: BUILD_DIR + '/assets/',
     path: BUILD_DIR,
     filename: 'bundle.js'
   },

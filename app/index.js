@@ -25,6 +25,8 @@ import TrackContainer from './containers/TrackContainer'
 
 import AlienStream from './reducers/index'
 
+require("./styles/app.scss");
+
 
 // We want to store our application state in localstorage to persist against refreshes
 const createPersistentStore = compose(
