@@ -4,7 +4,7 @@ class SettingsContainer extends React.Component  {
   render() {
     return (
       <div>
-        SettingsContainer
+        Settings Container
       </div>
     );
   }

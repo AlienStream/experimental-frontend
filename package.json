@@ -2,8 +2,9 @@
   "name": "experimental-frontend",
   "version": "1.0.0",
   "description": "Experimental Frontend Based On React",
-  "main": "app/main.js",
+  "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -27,6 +28,10 @@
     "react-router-redux": "^4.0.4",
     "redux": "^3.5.2",
     "redux-localstorage": "^0.4.0",
-    "webpack": "^1.13.0"
+    "webpack": "^1.13.0",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "devDependencies": {
+    "react-hot-loader": "^1.3.0"
   }
 }
