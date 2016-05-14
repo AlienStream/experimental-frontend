@@ -1,10 +1,19 @@
 $fa-font-path: "~font-awesome/fonts";
 @import "~font-awesome/scss/font-awesome.scss";
 
+.header-md .navbar-brand i, .header-md .navbar-nav i, i {
+	line-height: inherit; 
+}
+
 $simple-line-font-path: "~simple-line-icons/fonts/";
 @import "~simple-line-icons/scss/simple-line-icons.scss";
 
 $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 @import "~bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 
-@import "./theme/app.scss"
+@import "./theme/app.scss";
+
+.app__container {
+	@extend .hbox;
+	@extend .stretch;
+}
