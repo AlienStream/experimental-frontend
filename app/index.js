@@ -7,7 +7,7 @@ import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 import persistState from 'redux-localstorage'
 
 
-import App from './components/app'
+import App from './containers/App'
 
 import ExploreContainer from './containers/ExploreContainer'
 import LoginContainer from './containers/LoginContainer'
@@ -24,8 +24,6 @@ import TrackContainer from './containers/TrackContainer'
 
 
 import AlienStream from './reducers/index'
-
-require("./styles/app.scss");
 
 
 // We want to store our application state in localstorage to persist against refreshes
