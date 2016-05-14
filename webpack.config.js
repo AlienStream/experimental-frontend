@@ -5,6 +5,7 @@ var BUILD_DIR = path.resolve(__dirname, 'build');
 var APP_DIR = path.resolve(__dirname, 'app');
 
 var config = {
+  contentBase: BUILD_DIR,
   devtool: "source-map",
   entry: [
     'webpack-dev-server/client?http://0.0.0.0:3000', // WebpackDevServer host and port
@@ -51,8 +52,8 @@ var config = {
     ]
   },
   output: {
-    publicPath: BUILD_DIR + '/assets/',
-    path: BUILD_DIR,
+    publicPath: '/assets/',
+    path: BUILD_DIR + "/assets/",
     filename: 'bundle.js'
   },
   plugins: [
