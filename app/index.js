@@ -28,6 +28,7 @@ import AlienStream from './reducers/index'
 
 // We want to store our application state in localstorage to persist against refreshes
 const createPersistentStore = compose(
+  window.devToolsExtension ? window.devToolsExtension() : undefined,
   persistState()
 )(createStore)
 
@@ -37,9 +38,7 @@ const store = createPersistentStore(
   combineReducers({
     AlienStream,
     routing: routerReducer
-  }),
-  {}, // Initial State
-  window.devToolsExtension ? window.devToolsExtension() : undefined
+  })
 )
 
 // Create an enhanced history that syncs navigation events with the store

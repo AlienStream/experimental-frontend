@@ -116,14 +116,13 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	// We want to store our application state in localstorage to persist against refreshes
-	var createPersistentStore = (0, _redux.compose)((0, _reduxLocalstorage2.default)())(_redux.createStore);
+	var createPersistentStore = (0, _redux.compose)(window.devToolsExtension ? window.devToolsExtension() : undefined, (0, _reduxLocalstorage2.default)())(_redux.createStore);
 	
 	// Add the reducer to your store on the `routing` key
 	var store = createPersistentStore((0, _redux.combineReducers)({
 			AlienStream: _index2.default,
 			routing: _reactRouterRedux.routerReducer
-	}), {}, // Initial State
-	window.devToolsExtension ? window.devToolsExtension() : undefined);
+	}));
 	
 	// Create an enhanced history that syncs navigation events with the store
 	var history = (0, _reactRouterRedux.syncHistoryWithStore)(_reactRouter.hashHistory, store);
