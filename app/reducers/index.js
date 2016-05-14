@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
 
 
-const rootReducer = function (state = [], action) {
+const AlienStream = function (state = {}, action) {
 	return state;
 }
 
-export default rootReducer
+export default AlienStream

@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
-import { createStore, combineReducers, applyMiddleware } from 'redux'
+import { compose, createStore, combineReducers, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
-import {Router, Route, hashHistory, IndexRoute} from 'react-router'
+import { Router, Route, hashHistory, IndexRoute} from 'react-router'
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
+import persistState from 'redux-localstorage'
 
 
 import App from './components/app'
@@ -22,14 +23,23 @@ import PlaylistContainer from './containers/PlaylistContainer'
 import TrackContainer from './containers/TrackContainer'
 
 
-import rootReducer from './reducers/index'
+import AlienStream from './reducers/index'
+
+
+// We want to store our application state in localstorage to persist against refreshes
+const createPersistentStore = compose(
+  persistState()
+)(createStore)
+
 
 // Add the reducer to your store on the `routing` key
-const store = createStore(
+const store = createPersistentStore(
   combineReducers({
-    rootReducer,
+    AlienStream,
     routing: routerReducer
-  })
+  }),
+  {}, // Initial State
+  window.devToolsExtension ? window.devToolsExtension() : undefined
 )
 
 // Create an enhanced history that syncs navigation events with the store

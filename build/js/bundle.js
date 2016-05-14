@@ -65,6 +65,10 @@
 	
 	var _reactRouterRedux = __webpack_require__(/*! react-router-redux */ 252);
 	
+	var _reduxLocalstorage = __webpack_require__(/*! redux-localstorage */ 269);
+	
+	var _reduxLocalstorage2 = _interopRequireDefault(_reduxLocalstorage);
+	
 	var _app = __webpack_require__(/*! ./components/app */ 229);
 	
 	var _app2 = _interopRequireDefault(_app);
@@ -111,38 +115,42 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+	// We want to store our application state in localstorage to persist against refreshes
+	var createPersistentStore = (0, _redux.compose)((0, _reduxLocalstorage2.default)())(_redux.createStore);
+	
 	// Add the reducer to your store on the `routing` key
-	var store = (0, _redux.createStore)((0, _redux.combineReducers)({
-		rootReducer: _index2.default,
-		routing: _reactRouterRedux.routerReducer
-	}));
+	var store = createPersistentStore((0, _redux.combineReducers)({
+			AlienStream: _index2.default,
+			routing: _reactRouterRedux.routerReducer
+	}), {}, // Initial State
+	window.devToolsExtension ? window.devToolsExtension() : undefined);
 	
 	// Create an enhanced history that syncs navigation events with the store
 	var history = (0, _reactRouterRedux.syncHistoryWithStore)(_reactRouter.hashHistory, store);
 	
 	_reactDom2.default.render(_react2.default.createElement(
-		_reactRedux.Provider,
-		{ store: store },
-		_react2.default.createElement(
-			_reactRouter.Router,
-			{ history: history },
+			_reactRedux.Provider,
+			{ store: store },
 			_react2.default.createElement(
-				_reactRouter.Route,
-				{ path: '/', component: _app2.default },
-				'// App Pages',
-				_react2.default.createElement(_reactRouter.IndexRoute, { component: _ExploreContainer2.default }),
-				_react2.default.createElement(_reactRouter.Route, { path: 'login', component: _LoginContainer2.default }),
-				'// User Specific Pages',
-				_react2.default.createElement(_reactRouter.Route, { path: 'communities', component: _MyCommunitiesContainer2.default }),
-				_react2.default.createElement(_reactRouter.Route, { path: 'favorites', component: _MyFavoritesContainer2.default }),
-				_react2.default.createElement(_reactRouter.Route, { path: 'playlists', component: _MyPlaylistsContainer2.default }),
-				_react2.default.createElement(_reactRouter.Route, { path: 'settings', component: _SettingsContainer2.default }),
-				'// Object Detail Pages',
-				_react2.default.createElement(_reactRouter.Route, { path: 'community/:communityName', component: _CommunityContainer2.default }),
-				_react2.default.createElement(_reactRouter.Route, { path: 'playlist/:playlistId', component: _PlaylistContainer2.default }),
-				_react2.default.createElement(_reactRouter.Route, { path: 'track/:trackId', component: _TrackContainer2.default })
+					_reactRouter.Router,
+					{ history: history },
+					_react2.default.createElement(
+							_reactRouter.Route,
+							{ path: '/', component: _app2.default },
+							'// App Pages',
+							_react2.default.createElement(_reactRouter.IndexRoute, { component: _ExploreContainer2.default }),
+							_react2.default.createElement(_reactRouter.Route, { path: 'login', component: _LoginContainer2.default }),
+							'// User Specific Pages',
+							_react2.default.createElement(_reactRouter.Route, { path: 'communities', component: _MyCommunitiesContainer2.default }),
+							_react2.default.createElement(_reactRouter.Route, { path: 'favorites', component: _MyFavoritesContainer2.default }),
+							_react2.default.createElement(_reactRouter.Route, { path: 'playlists', component: _MyPlaylistsContainer2.default }),
+							_react2.default.createElement(_reactRouter.Route, { path: 'settings', component: _SettingsContainer2.default }),
+							'// Object Detail Pages',
+							_react2.default.createElement(_reactRouter.Route, { path: 'community/:communityName', component: _CommunityContainer2.default }),
+							_react2.default.createElement(_reactRouter.Route, { path: 'playlist/:playlistId', component: _PlaylistContainer2.default }),
+							_react2.default.createElement(_reactRouter.Route, { path: 'track/:trackId', component: _TrackContainer2.default })
+					)
 			)
-		)
 	), document.getElementById('app'));
 
 /***/ },
@@ -28217,14 +28225,14 @@
 	
 	var _redux = __webpack_require__(/*! redux */ 239);
 	
-	var rootReducer = function rootReducer() {
-		var state = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
+	var AlienStream = function AlienStream() {
+		var state = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
 		var action = arguments[1];
 	
 		return state;
 	};
 	
-	exports.default = rootReducer;
+	exports.default = AlienStream;
 
 /***/ },
 /* 258 */
@@ -29014,6 +29022,253 @@
 	
 	module.exports = isObjectLike;
 
+
+/***/ },
+/* 269 */
+/*!**************************************************!*\
+  !*** ./~/redux-localstorage/lib/persistState.js ***!
+  \**************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	exports['default'] = persistState;
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	var _createSlicerJs = __webpack_require__(/*! ./createSlicer.js */ 270);
+	
+	var _createSlicerJs2 = _interopRequireDefault(_createSlicerJs);
+	
+	var _utilMergeStateJs = __webpack_require__(/*! ./util/mergeState.js */ 273);
+	
+	/**
+	 * @description
+	 * persistState is a Store Enhancer that syncs (a subset of) store state to localStorage.
+	 *
+	 * @param {String|String[]} [paths] Specify keys to sync with localStorage, if left undefined the whole store is persisted
+	 * @param {Object} [config] Optional config object
+	 * @param {String} [config.key="redux"] String used as localStorage key
+	 * @param {Function} [config.slicer] (paths) => (state) => subset. A function that returns a subset
+	 * of store state that should be persisted to localStorage
+	 * @param {Function} [config.serialize=JSON.stringify] (subset) => serializedData. Called just before persisting to
+	 * localStorage. Should transform the subset into a format that can be stored.
+	 * @param {Function} [config.deserialize=JSON.parse] (persistedData) => subset. Called directly after retrieving
+	 * persistedState from localStorage. Should transform the data into the format expected by your application
+	 *
+	 * @return {Function} An enhanced store
+	 */
+	
+	var _utilMergeStateJs2 = _interopRequireDefault(_utilMergeStateJs);
+	
+	function persistState(paths, config) {
+	  var cfg = _extends({
+	    key: 'redux',
+	    merge: _utilMergeStateJs2['default'],
+	    slicer: _createSlicerJs2['default'],
+	    serialize: JSON.stringify,
+	    deserialize: JSON.parse
+	  }, config);
+	
+	  var key = cfg.key;
+	  var merge = cfg.merge;
+	  var slicer = cfg.slicer;
+	  var serialize = cfg.serialize;
+	  var deserialize = cfg.deserialize;
+	
+	  return function (next) {
+	    return function (reducer, initialState) {
+	      var persistedState = undefined;
+	      var finalInitialState = undefined;
+	
+	      try {
+	        persistedState = deserialize(localStorage.getItem(key));
+	        finalInitialState = merge(initialState, persistedState);
+	      } catch (e) {
+	        console.warn('Failed to retrieve initialize state from localStorage:', e);
+	      }
+	
+	      var store = next(reducer, finalInitialState);
+	      var slicerFn = slicer(paths);
+	
+	      store.subscribe(function () {
+	        var state = store.getState();
+	        var subset = slicerFn(state);
+	
+	        try {
+	          localStorage.setItem(key, serialize(subset));
+	        } catch (e) {
+	          console.warn('Unable to persist state to localStorage:', e);
+	        }
+	      });
+	
+	      return store;
+	    };
+	  };
+	}
+	
+	module.exports = exports['default'];
+
+/***/ },
+/* 270 */
+/*!**************************************************!*\
+  !*** ./~/redux-localstorage/lib/createSlicer.js ***!
+  \**************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+	exports['default'] = createSlicer;
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	var _getSubsetJs = __webpack_require__(/*! ./getSubset.js */ 271);
+	
+	var _getSubsetJs2 = _interopRequireDefault(_getSubsetJs);
+	
+	var _utilTypeOfJs = __webpack_require__(/*! ./util/typeOf.js */ 272);
+	
+	/**
+	 * @description
+	 * createSlicer inspects the typeof paths and returns an appropriate slicer function.
+	 *
+	 * @param {String|String[]} [paths] The paths argument supplied to persistState.
+	 *
+	 * @return {Function} A slicer function, which returns the subset to store when called with Redux's store state.
+	 */
+	
+	var _utilTypeOfJs2 = _interopRequireDefault(_utilTypeOfJs);
+	
+	function createSlicer(paths) {
+	  switch ((0, _utilTypeOfJs2['default'])(paths)) {
+	    case 'void':
+	      return function (state) {
+	        return state;
+	      };
+	    case 'string':
+	      return function (state) {
+	        return (0, _getSubsetJs2['default'])(state, [paths]);
+	      };
+	    case 'array':
+	      return function (state) {
+	        return (0, _getSubsetJs2['default'])(state, paths);
+	      };
+	    default:
+	      return console.error('Invalid paths argument, should be of type String, Array or Void');
+	  }
+	}
+	
+	module.exports = exports['default'];
+
+/***/ },
+/* 271 */
+/*!***********************************************!*\
+  !*** ./~/redux-localstorage/lib/getSubset.js ***!
+  \***********************************************/
+/***/ function(module, exports) {
+
+	/**
+	 * @description
+	 * getSubset returns an object with the same structure as the original object passed in,
+	 * but contains only the specified keys and only if that key has a truth-y value.
+	 *
+	 * @param {Object} obj The object from which to create a subset.
+	 * @param {String[]} paths An array of (top-level) keys that should be included in the subset.
+	 *
+	 * @return {Object} An object that contains the specified keys with truth-y values
+	 */
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports["default"] = getSubset;
+	
+	function getSubset(obj, paths) {
+	  var subset = {};
+	
+	  paths.forEach(function (key) {
+	    var slice = obj[key];
+	    if (slice) subset[key] = slice;
+	  });
+	
+	  return subset;
+	}
+	
+	module.exports = exports["default"];
+
+/***/ },
+/* 272 */
+/*!*************************************************!*\
+  !*** ./~/redux-localstorage/lib/util/typeOf.js ***!
+  \*************************************************/
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+	exports['default'] = typeOf;
+	var _isArray = Array.isArray || (Array.isArray = function (a) {
+	  return '' + a !== a && ({}).toString.call(a) === '[object Array]';
+	});
+	
+	/**
+	 * @description
+	 * typeof method that
+	 * 1. groups all false-y & empty values as void
+	 * 2. distinguishes between object and array
+	 *
+	 * @param {*} thing The thing to inspect
+	 *
+	 * @return {String} Actionable type classification
+	 */
+	
+	function typeOf(thing) {
+	  if (!thing) return 'void';
+	
+	  if (_isArray(thing)) {
+	    if (!thing.length) return 'void';
+	    return 'array';
+	  }
+	
+	  return typeof thing;
+	}
+	
+	module.exports = exports['default'];
+
+/***/ },
+/* 273 */
+/*!*****************************************************!*\
+  !*** ./~/redux-localstorage/lib/util/mergeState.js ***!
+  \*****************************************************/
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	exports["default"] = mergeState;
+	
+	function mergeState(initialState, persistedState) {
+	  return persistedState ? _extends({}, initialState, persistedState) : initialState;
+	}
+	
+	module.exports = exports["default"];
 
 /***/ }
 /******/ ]);
