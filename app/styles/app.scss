@@ -17,3 +17,27 @@ $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 	@extend .hbox;
 	@extend .stretch;
 }
+
+.app__content {
+	width: 100%;
+	height: 100%;
+}
+
+#masonry .item {
+	width: 16.6666666667%;
+	height: 0;
+	padding-bottom: 16.6666666667%;
+}
+
+#masonry .item-large {
+	width: 33.3333333333%;
+	padding-bottom: 33.3333333333%;
+}
+
+#masonry .item-wide {
+	width: 33.3333333333%;
+}
+
+#masonry .item-tall {
+	padding-bottom: 33.3333333333%;
+}
