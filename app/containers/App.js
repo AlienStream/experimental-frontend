@@ -12,14 +12,14 @@ class App extends React.Component {
     return (
       <div className="app">
         <Topbar />
-        <div className="app__container">
+        <div className="app__container ">
           <Navbar />
-          <div className="app__content">
+          <div className="app__content app_content--with-sidebar">
             {this.props.children}
           </div>
           <Sidebar />
+          <Controls />
         </div>
-        <Controls />
       </div>
     );
   }

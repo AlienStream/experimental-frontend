@@ -286,17 +286,17 @@ class Navbar extends React.Component {
                         </nav>
                     </div>
                 </section>
-                <footer className="footer hidden-xs no-padder text-center-nav-xs">
+                <footer className="footer controls__thumbnail hidden-xs no-padder text-center-nav-xs">
                     <div className="bg hidden-xs ">
                         <div className="dropdown dropup wrapper-sm clearfix">
                             <a href="#" className="dropdown-toggle" data-toggle="dropdown">
-                                <span className="thumb-sm avatar pull-left m-l-xs">                        
+                                <span className="thumb-sm avatar pull-left m-l-xs">
                                 <img src="images/a3.png" className="dker" alt="..." />
                                 <i className="on b-black"></i>
                               </span>
                                 <span className="hidden-nav-xs clear">
                                 <span className="block m-l">
-                                  <strong className="font-bold text-lt">John.Smith</strong> 
+                                  <strong className="font-bold text-lt">John.Smith</strong>
                                   <b className="caret"></b>
                                 </span>
                                 <span className="text-muted text-xs block m-l">Art Director</span>
