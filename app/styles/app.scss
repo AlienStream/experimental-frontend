@@ -24,6 +24,7 @@ $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 }
 
 #masonry .item {
+	overflow: hidden;
 	width: 16.6666666667%;
 	height: 0;
 	padding-bottom: 16.6666666667%;
