@@ -18,45 +18,45 @@ class Sidebar extends React.Component {
     ];
 
     var currentTrack = {
-          id: 64817,
-          title: "FUK UR MGMT (Snails Remix) by Kill The Noise",
-          rank: 7100,
-          thumbnail: "http://i1.sndcdn.com/artworks-000162214724-xuymb8-t500x500.jpg",
+      id: 62774,
+      title: "DJ Fresh - Louder (Doctor P & Flux Pavilion Remix)",
+      rank: 12900,
+      thumbnail: "",
+      favorite_count: 0,
+      play_count: 0,
+      channel_id: 18,
+      content_flags: 0,
+      created_at: "2016-05-04 07:00:47",
+      updated_at: "2016-05-16 16:56:04",
+      source_id: 1,
+      track_id: 62774,
+      community_id: 1,
+      hotness: 43.288590604027,
+      embeddable: {
+        id: 1883364,
+        track_id: 62774,
+        url: "https://youtu.be/7cxgao2rYZw",
+        type: "youtube",
+        created_at: "2016-05-04 07:08:47",
+        updated_at: "2016-05-04 07:08:47"
+      },
+      channel: {
+        id: 18,
+        url: "https://www.youtube.com/channel/UCfLFTP1uTuIizynWsZq2nkQ",
+        artist_id: 17,
+        created_at: "2015-06-03 05:19:57",
+        updated_at: "2015-06-03 05:19:57",
+        artist: {
+          id: 17,
+          name: "UKF Dubstep",
+          thumbnail: "https://i.ytimg.com/vi/MJlo0hWnZWc/maxresdefault.jpg",
           favorite_count: 0,
           play_count: 0,
-          channel_id: 4485,
-          content_flags: 0,
-          created_at: "2016-05-10 13:55:32",
-          updated_at: "2016-05-16 16:58:09",
-          source_id: 1,
-          track_id: 64817,
-          community_id: 1,
-          hotness: 48.299319727891,
-          embeddable: {
-            id: 1973742,
-            track_id: 64817,
-            url: "https://soundcloud.com/killthenoise/fuk-ur-mgmt-snailsremix",
-            type: "soundcloud",
-            created_at: "2016-05-10 13:59:11",
-            updated_at: "2016-05-10 13:59:11"
-          },
-          channel: {
-            id: 4485,
-            url: "http://soundcloud.com/killthenoise",
-            artist_id: 290,
-            created_at: "2015-08-05 18:32:21",
-            updated_at: "2015-08-05 18:32:21",
-            artist: {
-              id: 290,
-              name: "killthenoise",
-              thumbnail: "http://i1.sndcdn.com/artworks-000125039114-fzdqp5-t500x500.jpg",
-              favorite_count: 0,
-              play_count: 0,
-              created_at: "2015-08-05 18:32:21",
-              updated_at: "2015-08-05 18:32:21"
-            }
-          }
-    };
+          created_at: "2015-06-03 05:19:57",
+          updated_at: "2015-06-03 05:19:57"
+        }
+      }
+    }
 
     return (
       <div className="sidebar bg-black dker">
