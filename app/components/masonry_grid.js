@@ -23,7 +23,6 @@ class MasonryGrid extends React.Component {
                 id="masonry"
                 className="pos-rlt animated fadeInUpBig"
                 options={{percentPosition: true, columnWidth: '.column-width-sizer'}}
-                ref={function(c) {this.masonry = c.masonry;}.bind(this)}
             >
                 {masonryItems}
             </Masonry>
