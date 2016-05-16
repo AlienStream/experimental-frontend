@@ -2,7 +2,7 @@ import React from 'react';
 
 import Controls from '../components/controls'
 import Navbar from '../components/navbar'
-import Sidebar from '../components/sidebar'
+import Sidebar from '../containers/sidebar'
 import Topbar from '../components/topbar'
 
 require("../styles/app.scss");
