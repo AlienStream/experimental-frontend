@@ -2,6 +2,13 @@ import React from 'react';
 
 class MasonryItem extends React.Component {
     render() {
+
+        var thumbnail = this.props.thumbnail;
+        if ( ! thumbnail) {
+            thumbnail = "http://infinitelegroom.com/wp-content/uploads/2013/03/10-best-headphones-preview.png";
+        }
+
+
         return (
             <div className={this.props.className}>
                 <div className="item-overlay gd animated fadeInUp wrapper bg-info">
@@ -11,10 +18,12 @@ class MasonryItem extends React.Component {
                     </div>
                 </div>
                 <div className="bottom gd bg-info wrapper">
-                    <div className="m-t m-b"><a href="#" onClick={this.props.link} className="b-b b-danger h2 text-u-c text-lt font-bold">{this.props.title}</a></div>
+                    <div className="m-t m-b"><a href="#" onClick={this.props.link} className="b-b b-danger h4 text-u-c text-lt font-bold">{this.props.title}</a></div>
                     <p className="hidden-xs">{this.props.description}</p>
                 </div>
-                <img src={this.props.image} alt="" className="img-full" />
+                <div className="fillParent">
+                    <img src={thumbnail} alt="" />
+                </div>
             </div>
         );
     }

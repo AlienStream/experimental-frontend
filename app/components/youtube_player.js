@@ -28,9 +28,8 @@ class YoutubePlayer extends React.Component {
     }
 
     render() {
-
         // on first initialization grab an instance of the player
-        if (this.state.loaded == true && this.player === undefined) {
+        if (this.state.loaded == true && this.player === undefined && window.YT.get !== undefined) {
             this.player = window.YT.get('YTplayer', {
                 events: {
                     'onStateChange': this.onPlayerStateChange,

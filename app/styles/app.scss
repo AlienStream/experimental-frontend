@@ -21,6 +21,7 @@ $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 .app__content {
 	width: 100%;
 	height: 100%;
+	padding-bottom: 50px;
 }
 
 .app_content--with-sidebar {
@@ -41,6 +42,20 @@ $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 	width: 16.6666666667%;
 	height: 0;
 	padding-bottom: 16.6666666667%;
+
+	.fillParent {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+	}
+
+	img {
+		height: 100%;
+		width: 100%;
+		object-fit: cover;
+	}
 }
 
 #masonry .item-large {

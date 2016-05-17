@@ -12,6 +12,7 @@ class MasonryGrid extends React.Component {
         var masonryItems = items.map(function(item, key) {
            return (
                <MasonaryItem
+                key={key}
                 className={layout[key]}
                 {...item}
                />

@@ -7,9 +7,10 @@ class Playlist extends React.Component {
 
         var tracks = this.props.tracks;
 
-        var playlistItems = tracks.map(function (track) {
+        var playlistItems = tracks.map(function (track, key) {
             return (
                 <PlaylistTrack
+                    key={key}
                     {...track}
                 />
             );
