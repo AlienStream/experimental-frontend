@@ -3,7 +3,7 @@ import React from 'react';
 class Navbar extends React.Component {  
   render() {
     return (
-       <aside className="bg-black dk nav-xs aside hidden-print" id="nav">
+       <aside className="bg-black dk aside hidden-print" id="nav">
             <section className="vbox">
                 <section className="w-f-md scrollable">
                     <div className="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-railOpacity="0.2">

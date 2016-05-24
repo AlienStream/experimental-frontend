@@ -1,42 +1,14 @@
 import React from 'react';
 
-import MasonryGrid from '../components/masonry_grid'
+import SquareGrid from '../components/square_grid';
 
 class ExploreContainer extends React.Component {
     state = {
         items: []
     }
 
-    layout = [
-        "item item-large",
-        "item item-tall column-width-sizer",
-        "item",
-        "item",
-        "item",
-        "item",
-        "item",
-        "item item-tall",
-        "item",
-        "item",
-        "item",
-        "item",
-        "item item-tall",
-        "item item-wide",
-        "item item-large",
-        "item",
-        "item",
-        "item",
-        "item",
-        "item",
-        "item",
-        "item item-wide",
-        "item",
-        "item",
-        "item",
-    ];
-
     componentDidMount() {
-        fetch("http://api.alienstream.com/tracks/newest", {
+        fetch("http://api.alienstream.com/communities", {
             method: 'get'
         })
         .then((result) => {
@@ -44,6 +16,7 @@ class ExploreContainer extends React.Component {
         }).then((json) =>  {
             var items = json.data.map(function(item) {
                 var id = item.id;
+                item.title = item.name;
                 item.action = function() {
                     console.log("playing " + id);
                 }
@@ -61,9 +34,11 @@ class ExploreContainer extends React.Component {
 
     render() {
         return (
-            <section className="vbox">
-                <section className="scrollable">
-                    <MasonryGrid items={this.state.items} layout={this.layout} />
+            <section class="vbox">
+                <section class="w-f-md" id="bjax-target">
+                    <section class="hbox stretch">
+                        <SquareGrid items={this.state.items} title="Explore"/>
+                    </section>
                 </section>
             </section>
         );

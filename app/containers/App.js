@@ -1,6 +1,5 @@
 import React from 'react';
 
-import Controls from '../components/controls'
 import Navbar from '../components/navbar'
 import Sidebar from '../containers/sidebar'
 import Topbar from '../components/topbar'
@@ -18,7 +17,6 @@ class App extends React.Component {
             {this.props.children}
           </div>
           <Sidebar />
-          <Controls />
         </div>
       </div>
     );

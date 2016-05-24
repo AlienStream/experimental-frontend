@@ -3,7 +3,7 @@ import React from 'react';
 class Controls extends React.Component {
   render() {
     return (
-        <footer className="controls footer bg-info dker">
+        <footer className="controls footer bg-dark dker">
           <div id="jp_container_N">
             <div className="jp-type-playlist">
               <div id="jplayer_N" className="jp-jplayer hide"></div>
