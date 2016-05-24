@@ -15,259 +15,33 @@ class Navbar extends React.Component {
                                 <li>
                                     <a href="index.html">
                                         <i className="icon-disc icon text-success"></i>
-                                        <span className="font-bold">What's new</span>
+                                        <span className="font-bold">Communities</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="genres.html">
                                         <i className="icon-music-tone-alt icon text-info"></i>
-                                        <span className="font-bold">Genres</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="events.html">
-                                        <i className="icon-drawer icon text-primary-lter"></i>
-                                        <b className="badge bg-primary pull-right">6</b>
-                                        <span className="font-bold">Events</span>
+                                        <span className="font-bold">Playlists</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="listen.html">
                                         <i className="icon-list icon  text-info-dker"></i>
-                                        <span className="font-bold">Listen</span>
+                                        <span className="font-bold">Artists</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="video.html" data-target="#content" data-el="#bjax-el" data-replace="true">
-                                        <i className="icon-social-youtube icon  text-primary"></i>
-                                        <span className="font-bold">Video</span>
+                                    <a href="events.html">
+                                        <i className="icon-heart icon text-danger"></i>
+                                        <b className="badge bg-danger pull-right">6</b>
+                                        <span className="font-bold">Favorites</span>
                                     </a>
                                 </li>
                                 <li className="m-b hidden-nav-xs"></li>
                             </ul>
-                            <ul className="nav" data-ride="collapse">
-                                <li className="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">
-                                    Interface
-                                </li>
-                                <li>
-                                    <a href="#" className="auto">
-                                        <span className="pull-right text-muted">
-                                  <i className="fa fa-angle-left text"></i>
-                                  <i className="fa fa-angle-down text-active"></i>
-                                </span>
-                                        <i className="icon-screen-desktop icon">
-                                </i>
-                                        <span>Layouts</span>
-                                    </a>
-                                    <ul className="nav dk text-sm">
-                                        <li>
-                                            <a href="layout-color.html" className="auto">
-                                                <i className="fa fa-angle-right text-xs"></i>
-                                                <span>Color option</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="layout-boxed.html" className="auto">
-                                                <i className="fa fa-angle-right text-xs"></i>
-                                                <span>Boxed layout</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="layout-fluid.html" className="auto">
-                                                <i className="fa fa-angle-right text-xs"></i>
-                                                <span>Fluid layout</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#" className="auto">
-                                        <span className="pull-right text-muted">
-                                  <i className="fa fa-angle-left text"></i>
-                                  <i className="fa fa-angle-down text-active"></i>
-                                </span>
-                                        <i className="icon-chemistry icon">
-                                </i>
-                                        <span>UI Kit</span>
-                                    </a>
-                                    <ul className="nav dk text-sm">
-                                        <li>
-                                            <a href="buttons.html" className="auto">
-                                                <i className="fa fa-angle-right text-xs"></i>
-                                                <span>Buttons</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="icons.html" className="auto">
-                                                <b className="badge bg-info pull-right">369</b>
-                                                <i className="fa fa-angle-right text-xs"></i>
-                                                <span>Icons</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="grid.html" className="auto">
-                                                <i className="fa fa-angle-right text-xs"></i>
-                                                <span>Grid</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="widgets.html" className="auto">
-                                                <b className="badge bg-dark pull-right">8</b>
-                                                <i className="fa fa-angle-right text-xs"></i>
-                                                <span>Widgets</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="components.html" className="auto">
-                                                <i className="fa fa-angle-right text-xs"></i>
-                                                <span>Components</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="list.html" className="auto">
-                                                <i className="fa fa-angle-right text-xs"></i>
-                                                <span>List group</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#table" className="auto">
-                                                <span className="pull-right text-muted">
-                                      <i className="fa fa-angle-left text"></i>
-                                      <i className="fa fa-angle-down text-active"></i>
-                                    </span>
-                                                <i className="fa fa-angle-right text-xs"></i>
-                                                <span>Table</span>
-                                            </a>
-                                            <ul className="nav dker">
-                                                <li>
-                                                    <a href="table-static.html">
-                                                        <i className="fa fa-angle-right"></i>
-                                                        <span>Table static</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="table-datatable.html">
-                                                        <i className="fa fa-angle-right"></i>
-                                                        <span>Datatable</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="#form" className="auto">
-                                                <span className="pull-right text-muted">
-                                      <i className="fa fa-angle-left text"></i>
-                                      <i className="fa fa-angle-down text-active"></i>
-                                    </span>
-                                                <i className="fa fa-angle-right text-xs"></i>
-                                                <span>Form</span>
-                                            </a>
-                                            <ul className="nav dker">
-                                                <li>
-                                                    <a href="form-elements.html">
-                                                        <i className="fa fa-angle-right"></i>
-                                                        <span>Form elements</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="form-validation.html">
-                                                        <i className="fa fa-angle-right"></i>
-                                                        <span>Form validation</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="form-wizard.html">
-                                                        <i className="fa fa-angle-right"></i>
-                                                        <span>Form wizard</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="chart.html" className="auto">
-                                                <i className="fa fa-angle-right text-xs"></i>
-                                                <span>Chart</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="portlet.html" className="auto">
-                                                <i className="fa fa-angle-right text-xs"></i>
-                                                <span>Portlet</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="timeline.html" className="auto">
-                                                <i className="fa fa-angle-right text-xs"></i>
-                                                <span>Timeline</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#" className="auto">
-                                        <span className="pull-right text-muted">
-                                  <i className="fa fa-angle-left text"></i>
-                                  <i className="fa fa-angle-down text-active"></i>
-                                </span>
-                                        <i className="icon-grid icon">
-                                </i>
-                                        <span>Pages</span>
-                                    </a>
-                                    <ul className="nav dk text-sm">
-                                        <li>
-                                            <a href="profile.html" className="auto">
-                                                <i className="fa fa-angle-right text-xs"></i>
-                                                <span>Profile</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="blog.html" className="auto">
-                                                <i className="fa fa-angle-right text-xs"></i>
-                                                <span>Blog</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="invoice.html" className="auto">
-                                                <i className="fa fa-angle-right text-xs"></i>
-                                                <span>Invoice</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="gmap.html" className="auto">
-                                                <i className="fa fa-angle-right text-xs"></i>
-                                                <span>Google Map</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="jvectormap.html" className="auto">
-                                                <i className="fa fa-angle-right text-xs"></i>
-                                                <span>Vector Map</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="signin.html" className="auto">
-                                                <i className="fa fa-angle-right text-xs"></i>
-                                                <span>Signin</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="signup.html" className="auto">
-                                                <i className="fa fa-angle-right text-xs"></i>
-                                                <span>Signup</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="404.html" className="auto">
-                                                <i className="fa fa-angle-right text-xs"></i>
-                                                <span>404</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
                             <ul className="nav text-sm">
                                 <li className="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">
-                                    <span className="pull-right"><a href="#"><i className="icon-plus i-lg"></i></a></span> Playlist
+                                    <span className="pull-right"><a href="#"><i className="icon-plus i-lg"></i></a></span> My Communities
                                 </li>
                                 <li>
                                     <a href="#">

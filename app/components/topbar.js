@@ -9,8 +9,7 @@ class Topbar extends React.Component {
 	      <div className="navbar-header aside bg-info">
 	        <a href="index.html" className="navbar-brand text-lt">
 	          <i className="icon-earphones"></i>
-	          <img src="images/logo.png" alt="." className="hide" />
-	          <span className="hidden-nav-xs m-l-sm">Musik</span>
+	          <span className="hidden-nav-xs m-l-sm">AlienStream</span>
 	        </a>
 	      </div>
 		  <Controls />
