@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router';
 
 class Navbar extends React.Component {  
   render() {
@@ -13,10 +14,10 @@ class Navbar extends React.Component {
                                     Discover
                                 </li>
                                 <li>
-                                    <a href="index.html">
+                                    <Link to={`/`}>
                                         <i className="icon-disc icon text-success"></i>
                                         <span className="font-bold">Communities</span>
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li>
                                     <a href="genres.html">
@@ -41,7 +42,8 @@ class Navbar extends React.Component {
                             </ul>
                             <ul className="nav text-sm">
                                 <li className="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">
-                                    <span className="pull-right"><a href="#"><i className="icon-plus i-lg"></i></a></span> My Communities
+                                    <span className="pull-right"><a href="#"><i className="icon-plus i-lg"></i></a></span>
+                                    <Link to={`/communities`}>My Communities</Link>
                                 </li>
                                 <li>
                                     <a href="#">

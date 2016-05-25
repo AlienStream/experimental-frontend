@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom'
 import { compose, createStore, combineReducers, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
-import { Router, Route, hashHistory, IndexRoute} from 'react-router'
-import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
-import persistState from 'redux-localstorage'
+import { Router, Route, browserHistory, IndexRoute} from 'react-router'
+import { syncHistoryWithStore, routerReducer, routerMiddleware, push} from 'react-router-redux'
+import {persistStore, autoRehydrate} from 'redux-persist'
 
 
 import App from './containers/App'
@@ -26,23 +26,27 @@ import TrackContainer from './containers/TrackContainer'
 import AlienStream from './reducers/index'
 
 
-// We want to store our application state in localstorage to persist against refreshes
-const createPersistentStore = compose(
-  window.devToolsExtension ? window.devToolsExtension() : undefined,
-  persistState()
-)(createStore)
+const middleware = routerMiddleware(browserHistory)
 
-
-// Add the reducer to your store on the `routing` key
-const store = createPersistentStore(
+const store = createStore(
   combineReducers({
     AlienStream,
     routing: routerReducer
-  })
+  }),
+  compose(
+     window.devToolsExtension ? window.devToolsExtension() : undefined,
+     applyMiddleware(middleware),
+     autoRehydrate()
+  )
 )
+persistStore(store)
 
 // Create an enhanced history that syncs navigation events with the store
-const history = syncHistoryWithStore(hashHistory, store)
+const history = syncHistoryWithStore(browserHistory, store)
+history.listen(location => {
+	console.log(location.pathname);
+})
+
 
 ReactDOM.render(
 	<Provider store={store}>

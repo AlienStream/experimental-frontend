@@ -1,4 +1,5 @@
 import React from 'react';
+import {routerActions} from 'react-router-redux';
 
 import SquareGrid from '../components/square_grid';
 
@@ -8,6 +9,8 @@ class ExploreContainer extends React.Component {
     }
 
     componentDidMount() {
+        var store = this.context.store;
+
         fetch("http://api.alienstream.com/communities", {
             method: 'get'
         })
@@ -15,13 +18,9 @@ class ExploreContainer extends React.Component {
             return result.json();
         }).then((json) =>  {
             var items = json.data.map(function(item) {
-                var id = item.id;
                 item.title = item.name;
-                item.action = function() {
-                    console.log("playing " + id);
-                }
-                item.link = function() {
-                    console.log("navigating to track " + id);
+                item.onClick = function() {
+                    store.dispatch(routerActions.push("/community/" + item.name));
                 }
                 return item;
             });
@@ -34,9 +33,9 @@ class ExploreContainer extends React.Component {
 
     render() {
         return (
-            <section class="vbox">
-                <section class="w-f-md" id="bjax-target">
-                    <section class="hbox stretch">
+            <section className="vbox">
+                <section className="w-f-md" id="bjax-target">
+                    <section className="hbox stretch fadeIn animated">
                         <SquareGrid items={this.state.items} title="Explore"/>
                     </section>
                 </section>
@@ -44,5 +43,9 @@ class ExploreContainer extends React.Component {
         );
     }
 }
+
+ExploreContainer.contextTypes = {
+  store: React.PropTypes.object
+};
 
 export default ExploreContainer;

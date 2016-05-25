@@ -2,7 +2,7 @@ $fa-font-path: "~font-awesome/fonts";
 @import "~font-awesome/scss/font-awesome.scss";
 
 .header-md .navbar-brand i, .header-md .navbar-nav i, i {
-	line-height: inherit; 
+	line-height: inherit;
 }
 
 $simple-line-font-path: "~simple-line-icons/fonts/";
@@ -10,6 +10,7 @@ $simple-line-font-path: "~simple-line-icons/fonts/";
 
 $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 @import "~bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+@import "~animate.css/animate.min.css";
 
 @import "./theme/app.scss";
 

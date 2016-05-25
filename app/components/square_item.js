@@ -15,14 +15,14 @@ class SquareItem extends React.Component {
                     <div className="pos-rlt fillParent">
                         <div className="item-overlay opacity r r-2x bg-black">
                             <div className="center text-center m-t-n-lg">
-                                <a onClick={this.props.action}><i className="fa fa-play-circle fa-5x"></i></a>
+                                <a onClick={this.props.onClick}><i className="fa fa-play-circle fa-5x"></i></a>
                             </div>
                         </div>
-                        <a href="track-detail.html"><img src={thumbnail} alt="" className="r r-2x img-full" /></a>
+                        <a onClick={this.props.onClick}><img src={thumbnail} alt="" className="r r-2x img-full" /></a>
                     </div>
                 </div>
                 <div className="padder-v">
-                    <a onClick={this.props.action} className="text-ellipsis">{this.props.title}</a>
+                    <a onClick={this.props.onClick} className="text-ellipsis">{this.props.title}</a>
                 </div>
             </div>
         );
